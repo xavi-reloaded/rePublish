@@ -22,9 +22,10 @@ describe('BookLoader ::>', function(){
         expect(sut.epubUrl).toBe('test/resources/wizardofoz.epub');
     });
 
-    it('openEpub() when called should callback paint methods', function()
+    it('openEpub() when called with invalid epub shoud throw error', function()
     {
-        sut = new BookLoader('test/resources/wizardofoz.epub');
+        sut = new BookLoader('test/resources/asdf.epub');
+
         sut.openEpub();
 //        var viewStub=createHomeView($scope)
 //        viewStub=sinon.mock(viewStub);
@@ -45,7 +46,7 @@ describe('BookLoader ::>', function(){
 //            constructor: getView
 //        });
 
-//        expect(sut.epubUrl).toBe('test/resources/wizardofoz.epub23');
+        expect(sut.epubUrl).toBe('test/resources/asdf.epub');
     });
 
 

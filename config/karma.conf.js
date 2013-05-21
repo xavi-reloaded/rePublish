@@ -13,20 +13,25 @@ frameworks = ['jasmine'];
 
 // list of files / patterns to load in the browser
 files = [
-
     'js/lib/jquery/jquery.min.js',
     'js/lib/jquery/jquery-ui.min.js',
     'js/lib/requirejs/require.js',
+    'js/lib/zip.js/zip.js',
+    'js/lib/zip.js/zip-fs.js',
+    'js/lib/zip.js/zip-ext.js',
+    'js/lib/zip.js/tests/util.js',
 
     'js/**/*.js',
 
+    'test/resources/**/*.js',
+
     { pattern: 'test/lib/sinon/sinon-1.7.1.js', watched: false, included: true },
-    'test/unit/**/*.js'
+    'test/unit/enrichedEpub*.js'
 
 ];
 
 // list of files to exclude
-exclude = [];
+exclude = ['js/lib/zip.js/tests/*.js'];
 
 preprocessors = {
     '**/*.coffee': 'coffee'

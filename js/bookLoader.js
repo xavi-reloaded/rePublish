@@ -10,6 +10,8 @@ var BookLoader = (function () {
     }
 
     BookLoader.prototype.openEpub = function () {
+
+
         ePub.open(this.epubUrl, function (book) {
 
             var te = document.getElementById('book_title');
