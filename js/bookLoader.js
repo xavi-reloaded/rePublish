@@ -1,4 +1,84 @@
 
+var bookcallback = function (book) {
+
+    return book;
+
+    var te = document.getElementById('book_title');
+    te.textContent = book.title;
+
+    var ae = document.getElementById('author_heading');
+    ae.textContent = book.author;
+
+    var lc = document.getElementById('leftcontent'),
+        rc = document.getElementById('rightcontent'),
+        ln = document.getElementsByClassName('left pagenum')[0],
+        rn = document.getElementsByClassName('right pagenum')[0];
+
+    var pages;
+    if (window.orientation == 0 || window.orientation == 180) {
+        pages = [lc];
+    } else {
+        pages = [lc, rc];
+    }
+
+    pageHandler = new PageHandler(book, pages, [ln, rn]);
+
+    var contents = document.getElementById('contents');
+    for (var i = 0, l = book.toc.length; i < l; i++) {
+
+        // Sometimes navpoints aren't all covered, or they are done so in weird ways.
+        // try to be liberal about things.
+        if (book.toc[i] === undefined) continue;
+
+        var chapter = document.createElement('a');
+        var secName = book.toc[i].fileName;
+        chapter.setAttribute('href', '#section=' + secName);
+        chapter.textContent = book.toc[i].title;
+        chapter.onclick = function (secName) {
+            return function () {
+                pageHandler.goToSection(secName);
+                pageHandler.display();
+                contents.style.display = 'none';
+            }
+        }(secName);
+        contents.appendChild(chapter);
+    }
+
+    pageHandler.display();
+
+    swipe(null, pageHandler);
+
+    function handleArrowKeys(evt) {
+        evt = (evt) ? evt : ((window.event) ? event : null);
+        if (evt) {
+            switch (evt.keyCode) {
+                case 37:
+                    pageHandler.prevPage();
+                    break;
+                case 39:
+                    pageHandler.nextPage();
+                    break;
+                case 67:
+                    document.getElementById('contents').style.display = 'block';
+                    break;
+            }
+        }
+    }
+
+    document.onkeyup = handleArrowKeys;
+
+    // Set up an orientation handler
+    window.onorientationchange = function () {
+        if (window.orientation == 0 || window.orientation == 180) {
+            pageHandler.setPages([lc]);
+        } else {
+            pageHandler.setPages([lc,rc]);
+        }
+        pageHandler.display();
+    }
+
+}
+
 var BookLoader = (function () {
 
     function BookLoader(epub) {
@@ -10,85 +90,11 @@ var BookLoader = (function () {
     }
 
     BookLoader.prototype.openEpub = function () {
+        EnrichedEpub.open(this.epubUrl, bookcallback);
+    };
 
-
-        ePub.open(this.epubUrl, function (book) {
-
-            var te = document.getElementById('book_title');
-            te.textContent = book.title;
-
-            var ae = document.getElementById('author_heading');
-            ae.textContent = book.author;
-
-            var lc = document.getElementById('leftcontent'),
-                rc = document.getElementById('rightcontent'),
-                ln = document.getElementsByClassName('left pagenum')[0],
-                rn = document.getElementsByClassName('right pagenum')[0];
-
-            var pages;
-            if (window.orientation == 0 || window.orientation == 180) {
-                pages = [lc];
-            } else {
-                pages = [lc, rc];
-            }
-
-            pageHandler = new PageHandler(book, pages, [ln, rn]);
-
-            var contents = document.getElementById('contents');
-            for (var i = 0, l = book.toc.length; i < l; i++) {
-
-                // Sometimes navpoints aren't all covered, or they are done so in weird ways.
-                // try to be liberal about things.
-                if (book.toc[i] === undefined) continue;
-
-                var chapter = document.createElement('a');
-                var secName = book.toc[i].fileName;
-                chapter.setAttribute('href', '#section=' + secName);
-                chapter.textContent = book.toc[i].title;
-                chapter.onclick = function (secName) {
-                    return function () {
-                        pageHandler.goToSection(secName);
-                        pageHandler.display();
-                        contents.style.display = 'none';
-                    }
-                }(secName);
-                contents.appendChild(chapter);
-            }
-
-            pageHandler.display();
-
-            swipe(null, pageHandler);
-
-            function handleArrowKeys(evt) {
-                evt = (evt) ? evt : ((window.event) ? event : null);
-                if (evt) {
-                    switch (evt.keyCode) {
-                        case 37:
-                            pageHandler.prevPage();
-                            break;
-                        case 39:
-                            pageHandler.nextPage();
-                            break;
-                        case 67:
-                            document.getElementById('contents').style.display = 'block';
-                            break;
-                    }
-                }
-            }
-
-            document.onkeyup = handleArrowKeys;
-
-            // Set up an orientation handler
-            window.onorientationchange = function () {
-                if (window.orientation == 0 || window.orientation == 180) {
-                    pageHandler.setPages([lc]);
-                } else {
-                    pageHandler.setPages([lc,rc]);
-                }
-                pageHandler.display();
-            }
-
-        });
+    BookLoader.prototype.openEpubFromByteArray = function (rawepub) {
+        EnrichedEpub.openFromByteArray(rawepub, bookcallback);
     };
 
 

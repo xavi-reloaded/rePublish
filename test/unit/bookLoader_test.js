@@ -1,6 +1,8 @@
 'use strict';
 
 
+
+
 describe('BookLoader ::>', function(){
 
     var sut;
@@ -18,7 +20,7 @@ describe('BookLoader ::>', function(){
     it('openEpub() when called should open ePub', function()
     {
         sut = new BookLoader('test/resources/wizardofoz.epub');
-        sut.openEpub();
+        sut.openEpubFromByteArray(zipBlob(shelleypoetry_epub));
         expect(sut.epubUrl).toBe('test/resources/wizardofoz.epub');
     });
 
@@ -26,7 +28,7 @@ describe('BookLoader ::>', function(){
     {
         sut = new BookLoader('test/resources/asdf.epub');
 
-        sut.openEpub();
+        sut.openEpubFromByteArray(zipBlob(shelleypoetry_epub));
 //        var viewStub=createHomeView($scope)
 //        viewStub=sinon.mock(viewStub);
 //        viewStub.init=function() {viewStub.onInit();};

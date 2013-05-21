@@ -20,7 +20,7 @@ var EnrichedEpub = new function () {
         client.send(null);
     };
 
-    this.openFS = function (rawcontent, callback) {
+    this.openFromByteArray = function (rawcontent, callback) {
         var archive = new Zip.Archive(rawcontent);
         callback(new EnrichedEpub.Book(archive));
     };

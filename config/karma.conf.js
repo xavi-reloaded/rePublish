@@ -24,9 +24,10 @@ files = [
     'js/**/*.js',
 
     'test/resources/**/*.js',
+    'test/unit/helpers.js',
 
     { pattern: 'test/lib/sinon/sinon-1.7.1.js', watched: false, included: true },
-    'test/unit/enrichedEpub*.js'
+    'test/unit/**/*.js'
 
 ];
 
