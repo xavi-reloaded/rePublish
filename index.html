@@ -27,10 +27,7 @@
 
     <script type="text/javascript">
 
-      function loadTheBook () {
-        var epuburl = document.getElementById('epuburl').value;
-        loadBook(epuburl);
-      }
+
 
       function setPageSize(pageRatio) {
 
@@ -122,8 +119,6 @@ console.log('pixelFontSize: ' + pixelFontSize);
 
         setPageSize();
 
-
-        selector.style.display = 'none';
         container.style.display = 'block';
 
         var epubUrl;
@@ -222,54 +217,6 @@ console.log('pixelFontSize: ' + pixelFontSize);
     <div id="contents" style="display: none;">
     </div>
 
-    <div id="selector">
-        <div style="text-align: center; font-family: Helvetica, sans; margin-top: 20px; background-color: rgba(255,255,255,0.3); line-height: 1.5em;">
-          <span style="color: #0000dd">r</span><span style="color: #4444ee">ePub</span><span style="color: #0000dd">lish</span> &#8212; Pure-JavaScript ePub Reader
-        </div>
-      <div id="selectorContainer">
-        <div class="selection" onclick="loadBook('piedpiper.epub');">
-          <img src="covers/Pied_piper.jpg" alt="The Pied Piper of Hamelin"/>
-          <br/>The Pied Piper of Hamelin</div>
-        <div class="selection" onclick="loadBook('warofworlds.epub');">
-          <img src="covers/WarOfWorlds.jpg" alt="The War of the Worlds" />
-          <br/>The War of the Worlds</div>
-        <div class="selection" onclick="loadBook('flatland.epub');">
-          <img src="covers/Flatland.jpg" alt="Flatland"/>
-          <br/>Flatland</div>
-        <div class="selection" onclick="loadBook('gulliverstravels.epub');">
-          <img src="covers/Gulliver.jpg" alt="Gulliver's Travels"/>
-          <br/>Gulliver's Travels</div>
-        <div class="selection" onclick="loadBook('portraitoftheartist.epub');">
-          <img src="covers/Joyce.jpg" alt="Portrait of the Artist as a Young Man"/>
-          <br/>Portrait of the Artist<br/> as a Young Man</div>
-        <div class="selection" onclick="loadBook('wizardofoz.epub');">
-          <img src="covers/WizardOfOz.jpg" alt="The Wonderful Wizard of Oz"/>
-          <br/>The Wonderful Wizard of Oz</div>
-        <div class="selection" onclick="loadBook('shelleypoetry.epub');">
-          <img src="covers/Shelley.jpg" alt="Shelley's Poetry"/>
-          <br/>Shelley's Poetry</div>
-        <div class="selection" onclick="loadBook('fanniefarmer.epub');">
-          <img src="covers/Fannie.jpg" alt="The Fannie Farmer Cookbook" />
-          <br/>The Fannie Farmer Cookbook</div>
-        <div class="selection" onclick="loadBook('warandpeace.epub');">
-          <img src="covers/warandpeace.jpg" alt="War and Peace" />
-          <br/>War and Peace</div>
-        <div class="selection" onclick="loadBook('dracula.epub');">
-          <img src="covers/Dracula.jpg" alt="Dracula" />
-          <br/>Dracula</div>
-        <div class="selection" onclick="loadBook('faunaboreali.epub');">
-          <img src="covers/Fauna.jpg" alt="Fauna Boreali" />
-          <br/>Fauna Boreali</div>
-        <div class="selection" onclick="loadBook('huckleberry.epub');">
-          <img src="covers/Huck.jpg" alt="Huckleberry Finn" />
-          <br/>The Adventures of Huckleberry Finn</div>
-
-      </div>
-        <div style="text-align: center; font-family: Helvetica, sans; margin-top: -5px; background-color: rgba(255,255,255,0.3); line-height: 1.5em;">
-          <a href="http://github.com/blaine/rePublish">Get the Code</a>
-        </div>
-    </div>
-
     <div id="backgroundDiv">
       <canvas id="background" width="952" height="686"></canvas>
     </div>
@@ -300,9 +247,9 @@ console.log('pixelFontSize: ' + pixelFontSize);
       </div>
     </div>
 
-<!--    <div>
-      <input id='epuburl' type="text" />
-      <input id='epuburlgo' type='button' value='load' onclick='loadTheBook();' />
-    </div> -->
+  <script language="javascript">
+      loadBook("wizardofoz.epub");
+  </script>
+
   </body>
 </html>
