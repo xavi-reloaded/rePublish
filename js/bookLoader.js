@@ -1,5 +1,5 @@
 
-var bookcallback = function (book) {
+var bookDefaultCallback = function (book) {
 
     return book;
 
@@ -82,6 +82,7 @@ var bookcallback = function (book) {
 var BookLoader = (function () {
 
     function BookLoader(epub) {
+        epub = epub || '';
         if (epub.substr(0, 4) == 'http') {
             this.epubUrl = epub;
         } else {
@@ -90,11 +91,12 @@ var BookLoader = (function () {
     }
 
     BookLoader.prototype.openEpub = function () {
-        EnrichedEpub.open(this.epubUrl, bookcallback);
+        EnrichedEpub.open(this.epubUrl, bookDefaultCallback);
     };
 
-    BookLoader.prototype.openEpubFromByteArray = function (rawepub) {
-        EnrichedEpub.openFromByteArray(rawepub, bookcallback);
+    BookLoader.prototype.openEpubFromByteArray = function (rawepub,callback) {
+        callback = callback || bookDefaultCallback;
+        EnrichedEpub.openFromByteArray(rawepub, callback);
     };
 
 
