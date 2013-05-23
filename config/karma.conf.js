@@ -9,27 +9,31 @@
 // base path, that will be used to resolve files and exclude
 basePath = '../';
 
-frameworks = ['jasmine'];
+frameworks = ['jasmine', 'requirejs'];
 
 // list of files / patterns to load in the browser
 files = [
-    'js/lib/jquery/jquery.min.js',
-    'js/lib/jquery/jquery-ui.min.js',
-    'js/lib/requirejs/require.js',
-    'js/lib/zip.js/zip.js',
-    'js/lib/zip.js/zip-fs.js',
-    'js/lib/zip.js/zip-ext.js',
-    'js/lib/zip.js/tests/util.js',
+    {pattern: 'js/**/*.js', included: false},
+    {pattern: 'test/resources/**/*.js', included: false},
+    { pattern: 'test/lib/sinon/sinon-1.7.1.js', watched: false, included: true },
 
-    'js/**/*.js',
-
-    'test/resources/**/*.js',
+    'js/lib/EventEmitter/EventEmitter.js',
     'test/unit/helpers.js',
 
-    { pattern: 'test/lib/sinon/sinon-1.7.1.js', watched: false, included: true },
-    'test/unit/**/*.js'
+    {pattern: 'test/unit/*test.js', included: false},
+
+    'test/test-main.js'
 
 ];
+
+//    'js/lib/jquery/jquery.min.js',
+//    'js/lib/jquery/jquery-ui.min.js',
+//    'js/lib/requirejs/require.js',
+//    'js/lib/zip.js/zip.js',
+//    'js/lib/zip.js/zip-fs.js',
+//    'js/lib/zip.js/zip-ext.js',
+//    'js/lib/zip.js/tests/util.js',
+
 
 // list of files to exclude
 exclude = ['js/lib/zip.js/tests/*.js'];
@@ -96,6 +100,8 @@ reportSlowerThan = 500;
 
 plugins = [
     'karma-jasmine',
+    'karma-requirejs',
+
     'karma-chrome-launcher',
     'karma-firefox-launcher',
     'karma-junit-reporter']
