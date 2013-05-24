@@ -13,11 +13,11 @@ frameworks = ['jasmine', 'requirejs'];
 
 // list of files / patterns to load in the browser
 files = [
-    {pattern: 'js/**/*.js', included: false},
-    {pattern: 'test/resources/**/*.js', included: false},
-    { pattern: 'test/lib/sinon/sinon-1.7.1.js', watched: false, included: true },
 
-    'js/lib/EventEmitter/EventEmitter.js',
+    {pattern: 'js/**/*.js', included: false},
+    {pattern: 'test/resources/**/*.js', included: true},
+    {pattern: 'test/lib/sinon/sinon-1.7.1.js', watched: false, included: true },
+
     'test/unit/helpers.js',
 
     {pattern: 'test/unit/*test.js', included: false},
@@ -25,15 +25,6 @@ files = [
     'test/test-main.js'
 
 ];
-
-//    'js/lib/jquery/jquery.min.js',
-//    'js/lib/jquery/jquery-ui.min.js',
-//    'js/lib/requirejs/require.js',
-//    'js/lib/zip.js/zip.js',
-//    'js/lib/zip.js/zip-fs.js',
-//    'js/lib/zip.js/zip-ext.js',
-//    'js/lib/zip.js/tests/util.js',
-
 
 // list of files to exclude
 exclude = ['js/lib/zip.js/tests/*.js'];

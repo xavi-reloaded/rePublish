@@ -14,16 +14,26 @@ requirejs.config({
     baseUrl: '/base/',
 
     paths: {
-        'jquery': '/base/js/lib/jquery/jquery',
-        'jquery-ui': '/base/js/lib/jquery/jquery-ui'
-//        'EventEmitter':  '/base/js/lib/EventEmitter/EventEmitter'
+        events:         '/base/js/lib/EventEmitter/EventEmitter',
+        jquery:         '/base/js/lib/jquery/jquery',
+        jqueryui:       '/base/js/lib/jquery/jquery-ui',
+        dummy1:         '/base/js/lib/dummymodule/d1',
+        dummy2:         '/base/js/lib/dummymodule/d2',
+        dummy3:         '/base/js/lib/dummymodule/d3',
+        zip:            '/base/js/zip',
+        bookloader:     '/base/js/bookLoader',
+        enrichedepub:   '/base/js/enrichedEpub'
     },
 
     shim: {
-        'underscore': {
-            exports: '_'
+        bookloader: {
+            deps: ['enrichedepub']
+        },
+        enrichedepub: {
+            deps: ['zip']
         }
     },
+
 
     // ask Require.js to load these files (all our tests)
     deps: tests,
@@ -31,3 +41,13 @@ requirejs.config({
     // start test run, once Require.js is done
     callback: window.__karma__.start
 });
+
+/*
+
+ shim: {
+ "events": {
+ exports: "EventEmitter"  //attaches "EventEmitter" to the window object
+ }
+ },
+
+ */

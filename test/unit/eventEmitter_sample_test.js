@@ -15,36 +15,35 @@
 
 var eee;
 
-require(['require', '../../js/lib/EventEmitter/EventEmitter.js'], function (require)
-{
-    eee = new (require('../../js/lib/EventEmitter/EventEmitter.js')).EventEmitter();
-});
+//require(['require', '../../js/lib/EventEmitter/EventEmitter.js'], function (require)
+//{
+//    eee = new (require('../../js/lib/EventEmitter/EventEmitter.js')).EventEmitter();
+//});
 
-define(['jquery'], function(EventEmitter) {
+define(['events'], function(events) {
 
     describe('EventEmitter demonstration ::>', function(){
 
-        var  ee,eventCounter;
-
+        var  eventCounter;
 
 //        eventCounter = -1;
 //        ee = new eventemitter();
 //        ee.once("event", callback);
 
+        console.log('_________________________________________________________________________________________________________________');
+        console.log(events+' MIERDER');
+
         it('EventEmitter should be a valid EventEmitter Object', function()
         {
-
-            console.log(EventEmitter+' ');
-            expect(EventEmitter.addListener()==null).toBe(false);
-        });
-
-        it('__InstanceOF:: EventEmitter should return a valid emitter object', function()
-        {
+//            var EventEmitter = require('../../js/lib/EventEmitter/EventEmitter.js');
 //            var ee = new EventEmitter();
-            eee.once("event", callback);
-//            var ee = require("EventEmitter").EventEmitter();
-            console.log(eee+' ');
 
+            console.log(events+' ');
+
+            var eee = new events.EventEmitter();
+//            require("events").EventEmitter;
+
+            expect(eee==null).toBe(false);
 
         });
 

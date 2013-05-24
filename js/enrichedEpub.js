@@ -1,8 +1,13 @@
-var EnrichedEpub = new function () {
+(function (exports) {
 
+    var Zip = require('zip');
     var parser = new DOMParser();
 
-    this.open = function (uri, callback) {
+    function EnrichedEpub(){
+
+    }
+
+    EnrichedEpub.prototype.open = function (uri, callback) {
         var client = new XMLHttpRequest();
 
         client.onreadystatechange = function () {
@@ -20,12 +25,16 @@ var EnrichedEpub = new function () {
         client.send(null);
     };
 
-    this.openFromByteArray = function (rawcontent, callback) {
+    EnrichedEpub.open = EnrichedEpub.prototype.open;
+
+    EnrichedEpub.prototype.openFromByteArray = function (rawcontent, callback) {
         var archive = new Zip.Archive(rawcontent);
         callback(new EnrichedEpub.Book(archive));
     };
 
-    this.Book = function (archive) {
+    EnrichedEpub.openFromByteArray = EnrichedEpub.prototype.openFromByteArray;
+
+    EnrichedEpub.prototype.Book = function (archive) {
 
         var ocf = new EnrichedEpub.OCF(archive.files['META-INF/container.xml'].content());
         var opf = new EnrichedEpub.OPF(ocf.rootFile, archive);
@@ -41,7 +50,7 @@ var EnrichedEpub = new function () {
         this.toc = opf.toc.contents;
     };
 
-    this.OCF = function (containerXML) {
+    EnrichedEpub.prototype.OCF = function (containerXML) {
         var container = parser.parseFromString(containerXML, "application/xml");
 
         var rootfiles = container.querySelectorAll("rootfile"),
@@ -59,7 +68,7 @@ var EnrichedEpub = new function () {
         this.rootFile = formats['application/oebps-package+xml'];
     };
 
-    this.OPF = function (rootFile, archive) {
+    EnrichedEpub.prototype.OPF = function (rootFile, archive) {
 
         var opfXML = archive.files[rootFile].content();
         var opf = parser.parseFromString(opfXML, "application/xml");
@@ -106,7 +115,7 @@ var EnrichedEpub = new function () {
         this.toc = new EnrichedEpub.NCX(tocId, this);
     };
 
-    this.NCX = function (tocId, opf) {
+    EnrichedEpub.prototype.NCX = function (tocId, opf) {
         var ncxXML = opf.getFileById(tocId).content();
         var ncx = parser.parseFromString(ncxXML, 'application/xml');
 
@@ -144,4 +153,11 @@ var EnrichedEpub = new function () {
         this.contents = contents;
     };
 
-}();
+    if (typeof define === 'function') {
+        define( 'enrichedepub', [], function () { return EnrichedEpub; } );
+    }
+    else {
+        exports.EnrichedEpub = EnrichedEpub;
+    }
+
+}(this));

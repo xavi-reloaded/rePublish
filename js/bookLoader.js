@@ -79,7 +79,9 @@ var bookDefaultCallback = function (book) {
 
 }
 
-var BookLoader = (function () {
+(function (exports) {
+
+    var EnrichedEpub = require('enrichedepub');
 
     function BookLoader(epub) {
         epub = epub || '';
@@ -99,12 +101,17 @@ var BookLoader = (function () {
         EnrichedEpub.openFromByteArray(rawepub, callback);
     };
 
-
-
+    if (typeof define === 'function') {
+        define( 'bookloader', [], function () { return BookLoader; } );
+    }
+    else {
+        exports.BookLoader = BookLoader;
+    }
 
     return BookLoader;
 
-})();
+}(this));
+
 
 
 
