@@ -8,7 +8,7 @@
 
 
 
-define(['jquery','dummy1','dummy2','events','zip','dummy3'], function($,d1,d2,events,zip,d3) {
+define(['jquery','dummy1','dummy2','zipclass','dummy3','events'], function($,d1,d2,zip,d3,events) {
     describe('___||||> just checking', function() {
         it('jquery works', function() {
             var el = $('<div>require.js up and running</div>');
@@ -33,7 +33,7 @@ define(['jquery','dummy1','dummy2','events','zip','dummy3'], function($,d1,d2,ev
         it(' .: ZIP :.', function() {
             console.log(zip+' => ');
             var d = new zip();
-            expect(d.giveMeSomeSugar).toEqual('Hello, pinkainen');
+            expect(d.giveMeSomeSugar()).toEqual('Hello, pinkainen');
         });
 
         it(' .: EVENTS :.', function() {

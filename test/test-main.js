@@ -20,7 +20,7 @@ requirejs.config({
         dummy1:         '/base/js/lib/dummymodule/d1',
         dummy2:         '/base/js/lib/dummymodule/d2',
         dummy3:         '/base/js/lib/dummymodule/d3',
-        zip:            '/base/js/zip',
+        zipclass:       '/base/js/zip',
         bookloader:     '/base/js/bookLoader',
         enrichedepub:   '/base/js/enrichedEpub'
     },
@@ -30,7 +30,7 @@ requirejs.config({
             deps: ['enrichedepub']
         },
         enrichedepub: {
-            deps: ['zip']
+            deps: ['zipclass']
         }
     },
 

@@ -1,8 +1,7 @@
 (function (exports) {
 
-    var Zip = require('zip');
+    var Zip = require('zipclass');
     var parser = new DOMParser();
-
     function EnrichedEpub(){
 
     }
@@ -24,14 +23,12 @@
         client.open("GET", uri);
         client.send(null);
     };
-
     EnrichedEpub.open = EnrichedEpub.prototype.open;
 
     EnrichedEpub.prototype.openFromByteArray = function (rawcontent, callback) {
         var archive = new Zip.Archive(rawcontent);
         callback(new EnrichedEpub.Book(archive));
     };
-
     EnrichedEpub.openFromByteArray = EnrichedEpub.prototype.openFromByteArray;
 
     EnrichedEpub.prototype.Book = function (archive) {
@@ -49,6 +46,7 @@
 
         this.toc = opf.toc.contents;
     };
+    EnrichedEpub.Book = EnrichedEpub.prototype.Book;
 
     EnrichedEpub.prototype.OCF = function (containerXML) {
         var container = parser.parseFromString(containerXML, "application/xml");
@@ -67,9 +65,10 @@
         // Since the elements were processed in reverse, this is the first one.
         this.rootFile = formats['application/oebps-package+xml'];
     };
+    EnrichedEpub.OCF = EnrichedEpub.prototype.OCF;
 
     EnrichedEpub.prototype.OPF = function (rootFile, archive) {
-
+        console.log('file::> '+rootFile);
         var opfXML = archive.files[rootFile].content();
         var opf = parser.parseFromString(opfXML, "application/xml");
 
@@ -81,7 +80,6 @@
 
         this.getFileByName = function (fileName) {
             var fullPath = [opfPath, fileName].join("/");
-
             return archive.files[fullPath];
         };
 
@@ -114,6 +112,7 @@
         var tocId = spine.getAttribute('toc');
         this.toc = new EnrichedEpub.NCX(tocId, this);
     };
+    EnrichedEpub.OPF = EnrichedEpub.prototype.OPF;
 
     EnrichedEpub.prototype.NCX = function (tocId, opf) {
         var ncxXML = opf.getFileById(tocId).content();
@@ -152,6 +151,7 @@
 
         this.contents = contents;
     };
+    EnrichedEpub.NCX = EnrichedEpub.prototype.NCX;
 
     if (typeof define === 'function') {
         define( 'enrichedepub', [], function () { return EnrichedEpub; } );
