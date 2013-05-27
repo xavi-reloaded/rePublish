@@ -8,7 +8,7 @@
 
 
 
-define(['jquery','dummy1','dummy2','zipclass','dummy3','eventemitter'], function($,d1,d2,zip,d3,events)
+define(['jquery','dummy1','dummy2','zipclass','dummy3','events'], function($,d1,d2,zip,d3,events)
 {
     describe('___||||> just checking', function()
     {
@@ -44,7 +44,6 @@ define(['jquery','dummy1','dummy2','zipclass','dummy3','eventemitter'], function
 
         it(' .: EVENTS :. ', function()
         {
-            console.log(events+' => ');
             var d = new events();
             expect(d.getListeners()).toEqual([]);
         });

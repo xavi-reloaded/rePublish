@@ -14,7 +14,7 @@ requirejs.config({
     baseUrl: '/base/',
 
     paths: {
-        eventemitter:   '/base/js/lib/EventEmitter/EventEmitter',
+        events:   '/base/js/lib/EventEmitter/EventEmitter',
 
         jquery:         '/base/js/lib/jquery/jquery',
         jqueryui:       '/base/js/lib/jquery/jquery-ui',

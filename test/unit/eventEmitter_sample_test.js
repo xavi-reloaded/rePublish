@@ -20,7 +20,7 @@ var eee;
 //    eee = new (require('../../js/lib/EventEmitter/EventEmitter.js')).EventEmitter();
 //});
 
-define(['eventemitter'], function(EventEmitter) {
+define(['events'], function(EventEmitter) {
 
     describe('EventEmitter demonstration ::>', function(){
 
