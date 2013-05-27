@@ -242,7 +242,11 @@
 
 // ---------------------------------------------------------- //
 // ---------------------------------------------------------- //
+    exports.EventedCache = EventedCache;
 
+    if (typeof exports === 'function') {
+        exports.EventedCache = EventedCache;
+    }
 
     // Expose the class either via AMD or the global object
     if (typeof define === 'function' && define.amd) {
