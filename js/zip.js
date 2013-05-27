@@ -196,9 +196,7 @@
                             content = compressedData;
                             break;
                         case 8:
-                            //todo: make class inflate
                             content = RawDeflate.inflate(compressedData);
-//                            content = 'compressedData_mierder';
                             break;
                         default:
                             throw new Error("Unsupported compression method.");
