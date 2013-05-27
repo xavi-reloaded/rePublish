@@ -8,38 +8,45 @@
 
 
 
-define(['jquery','dummy1','dummy2','zipclass','dummy3','events'], function($,d1,d2,zip,d3,events) {
-    describe('___||||> just checking', function() {
-        it('jquery works', function() {
+define(['jquery','dummy1','dummy2','zipclass','dummy3','eventemitter'], function($,d1,d2,zip,d3,events)
+{
+    describe('___||||> just checking', function()
+    {
+        it('jquery works', function()
+        {
             var el = $('<div>require.js up and running</div>');
             expect(el.text()).toEqual('require.js up and running');
         });
 
-        it(' .: DUMMY 1 :.', function() {
+        it(' .: DUMMY 1 :.', function()
+        {
             var d = new d1();
             expect(d.giveMeSomeSugar()).toEqual('Hello, pinkainen');
         });
 
-        it(' .: DUMMY 2 :.', function() {
+        it(' .: DUMMY 2 :.', function()
+        {
             var d = new d2();
             expect(d.giveMeSomeSugar()).toEqual('Hello, pinkainen');
         });
 
-        it(' .: DUMMY 3 :.', function() {
+        it(' .: DUMMY 3 :.', function()
+        {
             var d = new d3();
             expect(d.giveMeSomeSugar()).toEqual('Hello, pinkainen');
         });
 
-        it(' .: ZIP :.', function() {
-            console.log(zip+' => ');
+        it(' .: ZIP :.', function()
+        {
             var d = new zip();
             expect(d.giveMeSomeSugar()).toEqual('Hello, pinkainen');
         });
 
-        it(' .: EVENTS :.', function() {
+        it(' .: EVENTS :. ', function()
+        {
             console.log(events+' => ');
-            var d = new (events).EventEmitter();
-            expect(d.getListeners()).toEqual('Hello, pinkainen');
+            var d = new events();
+            expect(d.getListeners()).toEqual([]);
         });
 
     });

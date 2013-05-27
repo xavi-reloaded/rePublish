@@ -20,7 +20,7 @@ var eee;
 //    eee = new (require('../../js/lib/EventEmitter/EventEmitter.js')).EventEmitter();
 //});
 
-define(['events'], function(events) {
+define(['eventemitter'], function(events) {
 
     describe('EventEmitter demonstration ::>', function(){
 
@@ -40,7 +40,7 @@ define(['events'], function(events) {
 
             console.log(events+' ');
 
-            var eee = new events.EventEmitter();
+            var eee = new events();
 //            require("events").EventEmitter;
 
             expect(eee==null).toBe(false);

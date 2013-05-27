@@ -370,14 +370,8 @@
 	};
 
 	// Expose the class either via AMD or the global object
-	if (typeof define === 'function') {
-//		define(function () {
-//			return EventEmitter;
-//		});
-        define( 'events', [], function () { return EventEmitter; } );
-	}
-	else {
-		exports.EventEmitter = EventEmitter;
-	}
+    if ( typeof define === "function") {
+        define( 'eventemitter', [], function () { return EventEmitter; } );
+    }
 
 }(this));
