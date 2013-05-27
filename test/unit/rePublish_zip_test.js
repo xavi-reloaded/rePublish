@@ -10,7 +10,7 @@
 
 define(['zipclass'], function(zip) {
 
-    describe('Z___||||> ZIP rePublish emmbeded class works', function() {
+    describe('Z___||||> ZIP rePublish emmbeded class works :::', function() {
         it('should get zip class by requirejs', function() {
             var d = new zip();
             expect(d.giveMeSomeSugar()).toEqual('Hello, pinkainen');
@@ -29,6 +29,14 @@ define(['zipclass'], function(zip) {
             var archive = new z.Archive(zipBlob(shelleypoetry_epub));
             var expected = 'META-INF/container.xml';
             expect(archive.files['META-INF/container.xml'].name).toEqual(expected);
+        });
+
+        it('Entries method should populate files',function()
+        {
+            var z = new zip();
+            var archive = new z.Archive(zipBlob(shelleypoetry_epub));
+            var expected = "<?xml version='1.0' encoding='utf-8'?>";
+            expect(archive.files['META-INF/container.xml'].content().substr(0,20)).toEqual(expected.substr(0,20));
         });
 
     });

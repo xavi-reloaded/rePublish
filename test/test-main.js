@@ -21,6 +21,7 @@ requirejs.config({
         dummy2:         '/base/js/lib/dummymodule/d2',
         dummy3:         '/base/js/lib/dummymodule/d3',
         zipclass:       '/base/js/zip',
+        zipinflateclass:'/base/js/inflate',
         bookloader:     '/base/js/bookLoader',
         enrichedepub:   '/base/js/enrichedEpub'
     },
@@ -31,6 +32,9 @@ requirejs.config({
         },
         enrichedepub: {
             deps: ['zipclass']
+        },
+        zipclass: {
+            deps: ['zipinflateclass']
         }
     },
 

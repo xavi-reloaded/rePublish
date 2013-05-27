@@ -99,7 +99,8 @@ define(['enrichedepub'], function(EnrichedEpub) {
         it('openFromByteArray() when called with valid epub should catch book title', function()
         {
             var title;
-            EnrichedEpub.openFromByteArray(zipBlob(shelleypoetry_epub), function (book)
+            var rawcontent = zipBlob(shelleypoetry_epub);
+            EnrichedEpub.openFromByteArray(rawcontent, function (book)
             {
                 title = book.title;
             });
