@@ -11,8 +11,10 @@ var EventedCache = require( "eventedcache" );
 (function (exports) {
 
     function cache() {
+        // Call the super constructor.
+        EventedCache.call( this );
         this.init();
-        return new EventedCache(this);
+        return (this);
     }
 
     cache.prototype = Object.create( EventedCache.prototype );
