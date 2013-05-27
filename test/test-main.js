@@ -15,6 +15,8 @@ requirejs.config({
 
     paths: {
         events:   '/base/js/lib/EventEmitter/EventEmitter',
+        eventedcache:   '/base/js/lib/homemadecache/EventedCache',
+        eventedcacheimpl:   '/base/js/lib/homemadecache/EventedCacheImpl',
 
         jquery:         '/base/js/lib/jquery/jquery',
         jqueryui:       '/base/js/lib/jquery/jquery-ui',
@@ -36,6 +38,12 @@ requirejs.config({
         },
         zipclass: {
             deps: ['zipinflateclass']
+        },
+        eventedcache: {
+            deps: ['events']
+        },
+        eventedcacheimpl: {
+            deps: ['eventedcache']
         }
     },
 

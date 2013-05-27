@@ -40,7 +40,7 @@ define(['events'], function(EventEmitter) {
 
         function callback() {
             eventCounter++;
-            console.log('Callback has been called '+eventCounter+' times');
+//            console.log('Callback has been called '+eventCounter+' times');
         }
     });
 
