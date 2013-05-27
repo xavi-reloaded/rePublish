@@ -1,25 +1,5 @@
 'use strict';
 
-
-//define(['EventEmitter'], function(EventEmitter) {
-//
-//    describe('EventEmitter well catched ::>', function(){
-//
-//        it('I can invoke EventEmitter through requirejs', function()
-//        {
-//            expect(EventEmitter==null).toBe(false);
-//        });
-//
-//    });
-//});
-
-var eee;
-
-//require(['require', '../../js/lib/EventEmitter/EventEmitter.js'], function (require)
-//{
-//    eee = new (require('../../js/lib/EventEmitter/EventEmitter.js')).EventEmitter();
-//});
-
 define(['events'], function(EventEmitter) {
 
     describe('EventEmitter demonstration ::>', function(){
