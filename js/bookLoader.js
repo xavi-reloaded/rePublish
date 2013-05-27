@@ -85,11 +85,7 @@ var bookDefaultCallback = function (book) {
 
     function BookLoader(epub) {
         epub = epub || '';
-        if (epub.substr(0, 4) == 'http') {
-            this.epubUrl = epub;
-        } else {
-            this.epubUrl = '' + epub;
-        }
+        this.epubUrl = epub;
     }
 
     BookLoader.prototype.openEpub = function () {

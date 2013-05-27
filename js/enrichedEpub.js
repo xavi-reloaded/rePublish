@@ -68,7 +68,6 @@
     EnrichedEpub.OCF = EnrichedEpub.prototype.OCF;
 
     EnrichedEpub.prototype.OPF = function (rootFile, archive) {
-        console.log('file::> '+rootFile);
         var opfXML = archive.files[rootFile].content();
         var opf = parser.parseFromString(opfXML, "application/xml");
 

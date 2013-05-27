@@ -10,6 +10,11 @@ define(['bookloader'], function(BookLoader) {
 
         var sut;
 
+        beforeEach(function()
+        {
+            sut = null;
+        });
+
         it('BookLoader Class when instanciate should not throw errors', function()
         {
             sut = new BookLoader('test/resources/wizardofoz.epub');
@@ -40,11 +45,6 @@ define(['bookloader'], function(BookLoader) {
                     if (book.toc[i] === undefined) continue;
                     var secName = book.toc[i].fileName;
                     var title = book.toc[i].title;
-
-                    console.log( book.toc[i]);
-                    console.log(secName);
-                    console.log(title);
-                    console.log('______________________________________________________________________________');
                 }
                 actual = book.toc.length;
             };
