@@ -44,6 +44,8 @@
  *   Hyphenator.run();
  * &lt;/script&gt;
  */
+
+(function (exports) {
 var Hyphenator = (function () {
 
 
@@ -1532,3 +1534,14 @@ if (Hyphenator.isBookmarklet()) {
 	Hyphenator.config({displaytogglebox: true, intermediatestate: 'visible'});
 	Hyphenator.run();
 }
+
+    // Expose the class either via AMD or the global object
+    if (typeof define === 'function') {
+        define(function () {
+            return Hyphenator;
+        });
+    }
+    else {
+        exports.Hyphenator = Hyphenator;
+    }
+}(this));

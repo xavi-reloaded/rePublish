@@ -24,6 +24,7 @@
     var PageHandler = function (book, displayElements, pageNumbers, chapterName) {
 
         var Section = require('section');
+        var Paginator = require('paginator')
 
         var sections = [],
             pageCounts = [0],
@@ -286,6 +287,7 @@
 
         var accum = 0;
         var naccum = 0;
+
         this.display = function () {
 
             var l = book.contents.length;

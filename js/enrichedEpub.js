@@ -1,7 +1,6 @@
 (function (exports) {
 
     var Zip = require('zipclass');
-    var PageHandler = require('pagehandler');
 
     var parser = new DOMParser();
 
@@ -15,7 +14,9 @@
         client.onreadystatechange = function () {
             if (client.readyState == 4 && client.status == 200) {
                 var archive = new Zip.Archive(client.responseText);
-                callback(new EnrichedEpub.Book(archive));
+                var book = new EnrichedEpub.Book(archive);
+                callback(book);
+
             } else if (client.readyState == 4 && client.status < 400 && client.status > 299) {
                 alert('I need to look elsewhere for the book, but I don\'t know how!');
             } else if (client.readyState == 4) {
@@ -31,13 +32,7 @@
     EnrichedEpub.prototype.openFromByteArray = function (rawcontent, callback) {
         var archive = new Zip.Archive(rawcontent);
         var book = new EnrichedEpub.Book(archive);
-
-        var lc = 3, rc = 4, ln = 3, rn = 4;
-        var pages = [lc];
-
-        var pageHandler = new PageHandler(book, pages, [ln, rn]);
-
-        callback(book, pageHandler);
+        callback(book);
     };
     EnrichedEpub.openFromByteArray = EnrichedEpub.prototype.openFromByteArray;
 

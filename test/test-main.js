@@ -29,12 +29,16 @@ requirejs.config({
         bookloader:     '/base/js/bookLoader',
         enrichedepub:   '/base/js/enrichedEpub',
         pagehandler:    '/base/js/pageHandler',
-        section:        '/base/js/section'
+        section:        '/base/js/section',
+        bookdefaultcallback:        '/base/js/bookDefaultCallback',
+        paginator:        '/base/js/paginator',
+        sax:        '/base/js/sax',
+        hyphenator:        '/base/js/Hyphenator'
     },
 
     shim: {
         bookloader: {
-            deps: ['pagehandler','enrichedepub']
+            deps: ['enrichedepub','bookdefaultcallback']
         },
         enrichedepub: {
             deps: ['pagehandler','zipclass']
@@ -52,7 +56,13 @@ requirejs.config({
             deps: ['eventedcache']
         },
         pagehandler: {
-            deps: ['section']
+            deps: ['section','paginator']
+        },
+        bookdefaultcallback: {
+            deps: ['jquery','pagehandler']
+        },
+        paginator: {
+            deps: ['sax','hyphenator']
         }
     },
 
