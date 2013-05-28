@@ -107,10 +107,16 @@ define(['enrichedepub'], function(EnrichedEpub) {
             expect(title).toBe('Shelley\'s poetry');
         });
 
-        it('Book() should load Book from archive', function( )
+        it('Book() should catch title from archive', function( )
         {
             var actual = new EnrichedEpub.Book(archive);
             expect(actual.title).toBe('Shelley\'s poetry');
+        });
+
+        it('Book() should catch toc from archive', function( )
+        {
+            var actual = new EnrichedEpub.Book(archive);
+            expect(actual.toc.length).toBe(1);
         });
 
         it('OCF should return valid archive rootFile', function(){
