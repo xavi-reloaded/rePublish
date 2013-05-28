@@ -50,8 +50,8 @@ define(['jquery','dummy1','dummy2','zipclass','dummy3','events','pagehandler'], 
 
         it(' .: PAGE HANDLER :. ', function()
         {
-            var d = new p();
-            expect(d.sections).toEqual(8);
+            var d = new p({contents:{}},[].push(0));
+            expect(d.sections).toEqual([]);
         });
 
     });

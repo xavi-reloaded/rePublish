@@ -1,7 +1,10 @@
 (function (exports) {
 
     var Zip = require('zipclass');
+    var PageHandler = require('pagehandler');
+
     var parser = new DOMParser();
+
     function EnrichedEpub(){
 
     }
@@ -27,6 +30,15 @@
 
     EnrichedEpub.prototype.openFromByteArray = function (rawcontent, callback) {
         var archive = new Zip.Archive(rawcontent);
+        var book = new EnrichedEpub.Book(archive);
+
+        var lc = 3,
+            rc = 4,
+            ln = 3,
+            rn = 4;
+        var pages = [lc];
+
+//        callback(book, new PageHandler(book, pages, [ln, rn]));
         callback(new EnrichedEpub.Book(archive));
     };
     EnrichedEpub.openFromByteArray = EnrichedEpub.prototype.openFromByteArray;

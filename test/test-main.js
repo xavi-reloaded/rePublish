@@ -36,7 +36,7 @@ requirejs.config({
             deps: ['pagehandler','enrichedepub']
         },
         enrichedepub: {
-            deps: ['zipclass']
+            deps: ['pagehandler','zipclass']
         },
         zipclass: {
             deps: ['zipinflateclass']

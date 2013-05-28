@@ -1,27 +1,41 @@
 
-var bookDefaultCallback = function (book,PageHandler) {
-//return book;
-    var te = document.getElementById('book_title');
-    te.textContent = book.title;
+var bookDefaultCallback = function (book,pageHandler) {
 
-    var ae = document.getElementById('author_heading');
-    ae.textContent = book.author;
+    console.log('book is here ::.' + JSON.stringify(book));
+    console.log('book is here ::.' + book);
+    console.log('pageHandler is here ::.' + pageHandler);
 
-    var lc = document.getElementById('leftcontent'),
-        rc = document.getElementById('rightcontent'),
-        ln = document.getElementsByClassName('left pagenum')[0],
-        rn = document.getElementsByClassName('right pagenum')[0];
+    return book;
 
-    var pages;
-    if (window.orientation == 0 || window.orientation == 180) {
-        pages = [lc];
-    } else {
-        pages = [lc, rc];
-    }
+//    var te = document.getElementById('book_title');
+//    te.textContent = book.title;
+//
+//    var ae = document.getElementById('author_heading');
+//    ae.textContent = book.author;
+//
+//    var lc = document.getElementById('leftcontent'),
+//        rc = document.getElementById('rightcontent'),
+//        ln = document.getElementsByClassName('left pagenum')[0],
+//        rn = document.getElementsByClassName('right pagenum')[0];
 
-    pageHandler = new PageHandler(book, pages, [ln, rn]);
 
-    var contents = document.getElementById('contents');
+//    if (window.orientation == 0 || window.orientation == 180) {
+//        pages = [lc];
+//    } else {
+//        pages = [lc, rc];
+//    }
+    var lc = 3,
+        rc = 4,
+        ln = 3,
+        rn = 4;
+    var pages = [lc];
+
+
+
+//    var contents = document.getElementById('contents');
+
+    var contents = $('<div id=contents></div>');
+
     for (var i = 0, l = book.toc.length; i < l; i++) {
 
         // Sometimes navpoints aren't all covered, or they are done so in weird ways.
@@ -46,41 +60,40 @@ var bookDefaultCallback = function (book,PageHandler) {
 
     swipe(null, pageHandler);
 
-    function handleArrowKeys(evt) {
-        evt = (evt) ? evt : ((window.event) ? event : null);
-        if (evt) {
-            switch (evt.keyCode) {
-                case 37:
-                    pageHandler.prevPage();
-                    break;
-                case 39:
-                    pageHandler.nextPage();
-                    break;
-                case 67:
-                    document.getElementById('contents').style.display = 'block';
-                    break;
-            }
-        }
-    }
-
-    document.onkeyup = handleArrowKeys;
-
-    // Set up an orientation handler
-    window.onorientationchange = function () {
-        if (window.orientation == 0 || window.orientation == 180) {
-            pageHandler.setPages([lc]);
-        } else {
-            pageHandler.setPages([lc,rc]);
-        }
-        pageHandler.display();
-    }
+//    function handleArrowKeys(evt) {
+//        evt = (evt) ? evt : ((window.event) ? event : null);
+//        if (evt) {
+//            switch (evt.keyCode) {
+//                case 37:
+//                    pageHandler.prevPage();
+//                    break;
+//                case 39:
+//                    pageHandler.nextPage();
+//                    break;
+//                case 67:
+//                    document.getElementById('contents').style.display = 'block';
+//                    break;
+//            }
+//        }
+//    }
+//
+//    document.onkeyup = handleArrowKeys;
+//
+//    // Set up an orientation handler
+//    window.onorientationchange = function () {
+//        if (window.orientation == 0 || window.orientation == 180) {
+//            pageHandler.setPages([lc]);
+//        } else {
+//            pageHandler.setPages([lc,rc]);
+//        }
+//        pageHandler.display();
+//    }
 
 }
 
 (function (exports) {
 
     var EnrichedEpub = require('enrichedepub');
-    var PageHandler = require('pagehandler');
 
     function BookLoader(epub) {
         epub = epub || '';
