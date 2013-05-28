@@ -8,7 +8,7 @@
 
 
 
-define(['jquery','dummy1','dummy2','zipclass','dummy3','events','pagehandler'], function($,d1,d2,zip,d3,events,p)
+define(['jquery','dummy1','dummy2','zipclass','dummy3','events','pagehandler','section'], function($,d1,d2,zip,d3,events,p,s)
 {
     describe('___||||> just checking', function()
     {
@@ -52,6 +52,17 @@ define(['jquery','dummy1','dummy2','zipclass','dummy3','events','pagehandler'], 
         {
             var d = new p({contents:{}},[].push(0));
             expect(d.sections).toEqual([]);
+        });
+
+        it(' .: SECTION :. ', function()
+        {
+            var contentCallback = function(a,b){
+                console.log('a = ' + a);
+                console.log('b = ' + b);
+            };
+
+            var d = new s(contentCallback);
+            expect(d.currPage).toEqual(0);
         });
 
     });

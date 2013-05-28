@@ -32,14 +32,12 @@
         var archive = new Zip.Archive(rawcontent);
         var book = new EnrichedEpub.Book(archive);
 
-        var lc = 3,
-            rc = 4,
-            ln = 3,
-            rn = 4;
+        var lc = 3, rc = 4, ln = 3, rn = 4;
         var pages = [lc];
 
-//        callback(book, new PageHandler(book, pages, [ln, rn]));
-        callback(new EnrichedEpub.Book(archive));
+        var pageHandler = new PageHandler(book, pages, [ln, rn]);
+
+        callback(book, pageHandler);
     };
     EnrichedEpub.openFromByteArray = EnrichedEpub.prototype.openFromByteArray;
 

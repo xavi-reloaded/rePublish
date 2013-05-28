@@ -23,6 +23,8 @@
 
     var PageHandler = function (book, displayElements, pageNumbers, chapterName) {
 
+        var Section = require('section');
+
         var sections = [],
             pageCounts = [0],
             currSection = 0;

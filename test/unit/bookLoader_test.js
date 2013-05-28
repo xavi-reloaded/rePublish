@@ -31,14 +31,14 @@ define(['bookloader'], function(BookLoader) {
             expect(sut.epubUrl).toBe('test/resources/wizardofoz.epub');
         });
 
-        it('openEpubFromByteArray() when called should open ePub', function()
+        it('openFromByteArray() when called should open ePub', function()
         {
             sut = new BookLoader('test/resources/wizardofoz.epub');
             sut.openEpubFromByteArray(zipBlob(shelleypoetry_epub),callback);
             expect(sut.epubUrl).toBe('test/resources/wizardofoz.epub');
         });
 
-        it('openEpubFromByteArray() when called without epub shoud continue with no error', function()
+        it('openFromByteArray() when called without epub shoud continue with no error', function()
         {
             sut = new BookLoader();
             sut.openEpubFromByteArray(zipBlob(shelleypoetry_epub),callback);

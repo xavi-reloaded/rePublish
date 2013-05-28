@@ -28,7 +28,8 @@ requirejs.config({
         zipinflateclass:'/base/js/inflate',
         bookloader:     '/base/js/bookLoader',
         enrichedepub:   '/base/js/enrichedEpub',
-        pagehandler:    'js/pageHandler'
+        pagehandler:    '/base/js/pageHandler',
+        section:        '/base/js/section'
     },
 
     shim: {
@@ -49,6 +50,9 @@ requirejs.config({
         },
         eventedcacheimpl: {
             deps: ['eventedcache']
+        },
+        pagehandler: {
+            deps: ['section']
         }
     },
 

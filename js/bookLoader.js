@@ -1,11 +1,6 @@
 
 var bookDefaultCallback = function (book,pageHandler) {
 
-    console.log('book is here ::.' + JSON.stringify(book));
-    console.log('book is here ::.' + book);
-    console.log('pageHandler is here ::.' + pageHandler);
-
-    return book;
 
 //    var te = document.getElementById('book_title');
 //    te.textContent = book.title;
@@ -36,29 +31,29 @@ var bookDefaultCallback = function (book,pageHandler) {
 
     var contents = $('<div id=contents></div>');
 
-    for (var i = 0, l = book.toc.length; i < l; i++) {
+//    for (var i = 0, l = book.toc.length; i < l; i++) {
+//
+//        // Sometimes navpoints aren't all covered, or they are done so in weird ways.
+//        // try to be liberal about things.
+//        if (book.toc[i] === undefined) continue;
+//
+//        var chapter = document.createElement('a');
+//        var secName = book.toc[i].fileName;
+//        chapter.setAttribute('href', '#section=' + secName);
+//        chapter.textContent = book.toc[i].title;
+//        chapter.onclick = function (secName) {
+//            return function () {
+//                pageHandler.goToSection(secName);
+//                pageHandler.display();
+//                contents.style.display = 'none';
+//            }
+//        }(secName);
+//        contents.appendChild(chapter);
+//    }
 
-        // Sometimes navpoints aren't all covered, or they are done so in weird ways.
-        // try to be liberal about things.
-        if (book.toc[i] === undefined) continue;
+//    pageHandler.display();
 
-        var chapter = document.createElement('a');
-        var secName = book.toc[i].fileName;
-        chapter.setAttribute('href', '#section=' + secName);
-        chapter.textContent = book.toc[i].title;
-        chapter.onclick = function (secName) {
-            return function () {
-                pageHandler.goToSection(secName);
-                pageHandler.display();
-                contents.style.display = 'none';
-            }
-        }(secName);
-        contents.appendChild(chapter);
-    }
-
-    pageHandler.display();
-
-    swipe(null, pageHandler);
+//    swipe(null, pageHandler);
 
 //    function handleArrowKeys(evt) {
 //        evt = (evt) ? evt : ((window.event) ? event : null);

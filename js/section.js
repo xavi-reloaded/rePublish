@@ -10,6 +10,9 @@ independently (or, at least, much more difficult).
 
 */
 
+(function (exports) {
+
+
 var Section = function (contentCallback) {
   var pages = [],
       lastPage = -1;
@@ -128,3 +131,17 @@ var Section = function (contentCallback) {
     }
   }
 };
+
+    // Expose the class either via AMD or the global object
+    if (typeof define === 'function') {
+        define(function () {
+            return Section;
+        });
+    }
+    else {
+        exports.Section = Section;
+    }
+
+
+
+}(this));
