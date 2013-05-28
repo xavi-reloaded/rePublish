@@ -8,7 +8,7 @@
 
 
 
-define(['jquery','dummy1','dummy2','zipclass','dummy3','events'], function($,d1,d2,zip,d3,events)
+define(['jquery','dummy1','dummy2','zipclass','dummy3','events','pagehandler'], function($,d1,d2,zip,d3,events,p)
 {
     describe('___||||> just checking', function()
     {
@@ -46,6 +46,12 @@ define(['jquery','dummy1','dummy2','zipclass','dummy3','events'], function($,d1,
         {
             var d = new events();
             expect(d.getListeners()).toEqual([]);
+        });
+
+        it(' .: PAGE HANDLER :. ', function()
+        {
+            var d = new p();
+            expect(d.sections).toEqual(8);
         });
 
     });

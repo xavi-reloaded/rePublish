@@ -27,12 +27,13 @@ requirejs.config({
         zipclass:       '/base/js/zip',
         zipinflateclass:'/base/js/inflate',
         bookloader:     '/base/js/bookLoader',
-        enrichedepub:   '/base/js/enrichedEpub'
+        enrichedepub:   '/base/js/enrichedEpub',
+        pagehandler:    'js/pageHandler'
     },
 
     shim: {
         bookloader: {
-            deps: ['enrichedepub']
+            deps: ['pagehandler','enrichedepub']
         },
         enrichedepub: {
             deps: ['zipclass']

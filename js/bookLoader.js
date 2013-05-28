@@ -1,8 +1,6 @@
 
-var bookDefaultCallback = function (book) {
-
-    return book;
-
+var bookDefaultCallback = function (book,PageHandler) {
+//return book;
     var te = document.getElementById('book_title');
     te.textContent = book.title;
 
@@ -82,6 +80,7 @@ var bookDefaultCallback = function (book) {
 (function (exports) {
 
     var EnrichedEpub = require('enrichedepub');
+    var PageHandler = require('pagehandler');
 
     function BookLoader(epub) {
         epub = epub || '';
