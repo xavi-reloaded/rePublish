@@ -8,7 +8,7 @@
 
 
 
-define(['jquery','dummy1','dummy2','zipclass','dummy3','events','pagehandler','section'], function($,d1,d2,zip,d3,events,p,s)
+define(['jquery','dummy1','dummy2','zipclass','dummy3','events','pagehandler','section','hyphenator'], function($,d1,d2,zip,d3,events,p,s,h)
 {
     describe('___||||> just checking', function()
     {
@@ -63,6 +63,12 @@ define(['jquery','dummy1','dummy2','zipclass','dummy3','events','pagehandler','s
 
             var d = new s(contentCallback);
             expect(d.currPage).toEqual(0);
+        });
+
+        it(' .: HYPHENATOR :. ', function()
+        {
+            var hyphenator = new h();
+            expect(hyphenator.version).toEqual('2.4.0');
         });
 
     });

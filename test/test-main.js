@@ -24,6 +24,7 @@ requirejs.config({
         dummy2:         '/base/js/lib/dummymodule/d2',
         dummy3:         '/base/js/lib/dummymodule/d3',
         dummy4:         '/base/js/lib/dummymodule/d4',
+        dummy5:         '/base/js/lib/dummymodule/d5',
         zipclass:       '/base/js/zip',
         zipinflateclass:'/base/js/inflate',
         bookloader:     '/base/js/bookLoader',

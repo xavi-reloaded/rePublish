@@ -6,22 +6,28 @@
  * To change this template use File | Settings | File Templates.
  */
 
-// sample extending from super class event emitter
+
 
 (function (exports) {
     'use strict';
 
-    var EventEmitter = require( "events" );
-
-    function d4() {
-        EventEmitter.call(this);
-        return (this);
+    function d5() {
+        this.somefunction = somefunction;
     }
 
-    d4.prototype = Object.create( EventEmitter.prototype );
-
-    var proto = d4.prototype,
+    var proto = d5.prototype,
         nativeIndexOf = Array.prototype.indexOf ? true : false;
+
+
+
+    var somevar = 'foo',
+        somefunction = function(){
+            return 'some function return'
+        },
+        somemodule = (function(){
+            console.log('from somemodule:'+somevar);
+        }()) ;
+
 
 
     proto.giveMeSomeSugar =  function() {
@@ -29,10 +35,10 @@
     }
 
     if (typeof define === 'function') {
-        define( 'dummy4', [], function () { return d4; } );
+        define( 'dummy5', [], function () { return d5; } );
     }
     else {
-        exports.d4 = d4;
+        exports.d5 = d5;
     }
 
 }(this) );
